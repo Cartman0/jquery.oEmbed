@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Get Embed Link</title>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/notosansjapanese.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="jquery.xdomainajax.js"></script>
+  </head>
+  <body>
+    <header>
+        <h1 class="header__title">Get Embed Link</h1>
+        <i class="fa fa-link header__icon"></i>
+    </header>
+    <main>
+      <!-- input -->
+      <section class="input">
+        <h2 class="input__header">input URL</h2>
+        <div class="input__box-wrapper">
+          <i class="fa fa-hand-o-right input__icon"></i>
+          <input class="input__box" type="url" required>
+          <button class="input__btn input__btn_primary">click !</button>
+        </div>
+      </section>
+      <!-- outputs -->
+      <section class="outputs">
+        <!-- output_only-url-link -->
+        <section class="output output_only-url-link">
+          <h2 class="output__header output__header_only-url-link">only url link</h2>
+          <div class="output__preview output__preview_only-url-link"></div>
+          <textarea class="output__code output__code_only-url-link" rows="8" cols="60"></textarea>
+        </section>
+        <!-- output_title-link -->
+        <section class="output output_title-link">
+          <h2 class="output__header output__header_title-link">title link</h2>
+          <div class="output__preview output__preview_title-link"></div>
+          <textarea class="output__code output__code_title-link" rows="8" cols="60"></textarea>
+        </section>
+        <!-- output_native-embed-link -->
+        <section class="output output_native-embed-link">
+          <h2 class="output__header output__header_native-embed-link">native embed link</h2>
+          <div class="output__preview output__preview_native-embed-link">
+          </div>
+          <textarea class="output__code output__code_native-embed-link" rows="8" cols="60"></textarea>
+        </section>
+        <!-- output_output_hatenaBlogParts-embed-link -->
+        <section class="output output_hatenaBlogParts-embed-link">
+          <h2 class="output__header output__header_hatenaBlogParts-embed-link">hatena Blog Parts embed link</h2>
+          <div class="output__preview output__preview_hatenaBlogParts-embed-link"></div>
+          <textarea class="output__code output__code_hatenaBlogParts-embed-link" rows="8" cols="60"></textarea>
+        </section>
+      </section>
+    </main>
+
+    <footer>
+      <small>2015</small>
+    </footer>
+
+    <script src="jquery.oEmbed.js"></script>
+    <script>
+      $(function(){
+        /*
+          url sample
+          // var permlink = 'http://hatebuman.hatenablog.com/entry/2013/11/30/161605';
+          // var permlink = 'http://ifttt.com/recipes/190824-auto-photo-bookof-locationthumbnail-ver';
+          // var permlink = 'https://www.youtube.com/watch?v=2BhoPuuQ3mw';
+          // var permlink = 'http://www.hulu.com/watch/842865';
+          // var permlink = 'http://www.slideshare.net/sakk/movable-type-5-3076177';
+          // var permlink = 'https://ja.blog.wordpress.com/2013/11/12/related/';
+
+          //wordpress
+          //dev: http://develop.wordpress.com/oembed-provider-api/
+          //var permlink = 'https://matt.wordpress.com/2011/07/14/clouds-over-new-york/';
+
+          // var permlink = 'https://www.flickr.com/photos/britishlibrary/11251068105/';
+          // var permlink = 'http://www.ted.com/talks/meg_jay_why_30_is_not_the_new_20?language=ja';
+
+          // cacoo dev doc: https://cacoo.com/lang/ja/api_oembed
+
+          // var permlink = "https://cacoo.com/diagrams/A7IzPxSffGbeh9LJ/edit?sampleId=official-1492319";
+          //dailymotion
+          // var permlink = "http://www.dailymotion.com/video/x37cws6_%E4%B8%96%E7%95%8C%E3%81%AE%E6%9E%9C%E3%81%A6%E3%81%BE%E3%81%A7%E3%82%A4%E3%83%83%E3%83%86q-150920_fun";
+          // var permlink = "https://soundcloud.com/future/hundaes-if-only-edmcom-exclusive";
+
+          // var permlink = "https://www.kickstarter.com/projects/1196365711/i-live-in-a-clown-motel-a-journey-into-the-heart-o?ref=home_popular";
+
+          // var permlink = "http://codepen.io/tmrDevelops/pen/XmNwwO";
+
+          // var permlink = "https://speakerdeck.com/yosuke_furukawa/webrtc-gai-yao-karazhong-falseshi-zu-mimade";
+
+          // var permlink = 'https://instagram.com/p/76Ec2mseH1/';
+          // var permlink = "https://instagram.com/p/6ANKhwseE-/";
+
+          // var permlink = "http://www.ustream.tv/channel/%E6%98%9F%E7%A9%BA%E3%83%A9%E3%82%A4%E3%83%96%E3%82%AB%E3%83%A1%E3%83%A9-%E6%98%9F%E7%A9%BA%E8%A6%B3%E6%9C%9B";
+
+          // var permlink = "https://twitter.com/henjo_official/status/646657461600976897";
+
+          // var permlink = "https://vine.co/v/Ml16lZVTTxe";
+
+          // default url
+          // var permlink = 'http://poporon.poponet.jp/20150816/8182';
+        */
+        $('.input__btn').click(function(event) {
+          /* Act on the event */
+          // console.log($(this).val());
+          var url = $('.input__box').val();
+
+          /*
+            url
+            title
+          */
+          $.when(
+            $.oEmbed(url, '.entry-title', {hatenaBlogCard: 'html'})
+          )
+          .done(function(result){
+            // url
+            var href = $(result).attr('href');
+            var a = '<a href="' + href + '">' + href + '<\/a>';
+            $('.output__preview_only-url-link').html(a);
+            $('.output__code_only-url-link').text(a);
+
+            // title
+            var $title = $(result);
+            var title_a = '<a href="' + href +'">' + $title.text() + '<\/a>';
+            $('.output__preview_title-link').html(title_a);
+            $('.output__code_title-link').text(title_a);
+          });
+
+          // hatenaBlogParts embed link
+          $.when(
+            $.oEmbed(url, 'hatenablogcard')
+          )
+          .done(function(result){
+            $('.output__preview_hatenaBlogParts-embed-link').html(result);
+            $('.output__code_hatenaBlogParts-embed-link').text(result);
+          });
+
+          // native embed link
+          $.when(
+            $.oEmbed(url, 'html')
+          )
+          .done(function(result){
+            // console.log(result);
+            $('.output__preview_native-embed-link').html(result);
+            $('.output__code_native-embed-link').text(result);
+          });
+
+          $.when(
+            $.oEmbed(url, '.thumb-wrapper', {hatenaBlogCard: 'html'})
+          )
+          .done(function(result){
+            console.log(result);
+          });
+        });
+
+
+
+        // var key = 'thumbnail_url';
+        // var key = '.entry-title';
+        // var key = '.thumb-wrapper';
+        // var key = 'blogcard';
+        // var key = 'html'
+
+        // $('.result').oEmbed(permlink, key, 'html', settings);
+        // var text = '';
+        // $('.output__preview_title-link').oEmbed(permlink,'.entry-title', 'html', settings);
+      });
+    </script>
+  </body>
+</html>
