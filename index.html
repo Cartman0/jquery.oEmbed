@@ -148,26 +148,7 @@
             $('.output__preview_native-embed-link').html(result);
             $('.output__code_native-embed-link').text(result);
           });
-
-          $.when(
-            $.oEmbed(url, '.thumb-wrapper', {hatenaBlogCard: 'html'})
-          )
-          .done(function(result){
-            console.log(result);
-          });
         });
-
-
-
-        // var key = 'thumbnail_url';
-        // var key = '.entry-title';
-        // var key = '.thumb-wrapper';
-        // var key = 'blogcard';
-        // var key = 'html'
-
-        // $('.result').oEmbed(permlink, key, 'html', settings);
-        // var text = '';
-        // $('.output__preview_title-link').oEmbed(permlink,'.entry-title', 'html', settings);
       });
     </script>
   </body>
