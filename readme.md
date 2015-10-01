@@ -37,8 +37,6 @@ detail of oEmbed API
 
 ## Sample Page
 
-
-
 ---
 
 ### Support Providers
@@ -57,6 +55,7 @@ detail of oEmbed API
 - [vine](https://dev.twitter.com/web/vine/oembed)
 - [wordpres.com](https://developer.wordpress.com/docs/oembed-provider-api/)
 - youtube
+
 ---
 
 ## How to use
